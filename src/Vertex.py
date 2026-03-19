@@ -7,4 +7,5 @@ from typing import Any
 class Vertex:
     def __init__(self, data: VertexData):
         self.data = data
-        self.edges: dict[Any, EdgeData] = {}
+        self.outgoing: dict[Any, EdgeData] = {}
+        self.incoming: dict[Any, EdgeData] = {}
