@@ -31,3 +31,40 @@ class KnowledgeGraph:
 
         # Finally remove the vertex
         del self.vertices[vid]
+    
+    def insert_arc(self, u, v, edge_data):
+        if u not in self.vertices or v not in self.vertices:
+            return False
+
+        source = self.vertices[u]
+        dest = self.vertices[v]
+
+        source.outgoing[v] = edge_data
+        dest.incoming[u] = edge_data
+        return True
+
+    def remove_arc(self, u, v):
+        if u not in self.vertices or v not in self.vertices:
+            return False
+
+        source = self.vertices[u]
+        dest = self.vertices[v]
+
+        if v not in source.outgoing:
+            return False
+
+        source.outgoing.pop(v)
+        dest.incoming.pop(u)
+        return True
+
+    def arc_exists(self, u, v):
+        if u not in self.vertices or v not in self.vertices:
+            return False
+
+        return v in self.vertices[u].outgoing
+
+    def get_arc(self, u, v):
+        if u not in self.vertices or v not in self.vertices:
+            return None
+
+        return self.vertices[u].outgoing.get(v)
