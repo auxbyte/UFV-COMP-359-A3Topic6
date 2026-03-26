@@ -68,3 +68,23 @@ class KnowledgeGraph:
             return None
 
         return self.vertices[u].outgoing.get(v)
+
+#Sabreen's contribution starts now 
+    
+    #get all outgoing neighbours of a vertex 
+    def get_neighbors(self, vid):
+        #checking if vertex exists in graph
+        if vid not in self.vertices:
+            return []
+            #outgoing is a dict ---> keys are neighbour vertex ids 
+            return list(self.vertices[vid].outgoing.keys())
+            
+    #get all incoming neighbours (who point to this vertex)
+    def get_predecessors(self,vid):
+        if vid not in self.vertices:
+            return []
+
+            #incoming dict stores vertices that connect to this one 
+            return list(self.vertices[vid].incoming.keys())
+    
+
