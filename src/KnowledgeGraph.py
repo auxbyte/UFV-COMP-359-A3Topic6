@@ -69,7 +69,7 @@ class KnowledgeGraph:
 
         return self.vertices[u].outgoing.get(v)
 
-#Sabreen's contribution starts now 
+#Sabreen's contribution 
     
     #get all outgoing neighbours of a vertex 
     def get_neighbors(self, vid):
@@ -86,5 +86,35 @@ class KnowledgeGraph:
 
             #incoming dict stores vertices that connect to this one 
             return list(self.vertices[vid].incoming.keys())
+
+    #BFS traversal 
+    def bfs(self,start): 
+        if start not in self.vertices:
+            return []
+
+        from collections import deque 
+
+        visited = set() #track visited vertices 
+        queue = deque([start]) #the queue start for bfs 
+        result = [] #store traversal order 
+
+        while queue:
+            current = queue.popleft()
+
+            #if the vertex isn't visited 
+            if current not in visited:
+                visited.add(current)
+                result.append(current)
+
+                #add neighbours to the queue 
+                for neighbor in self.get_neighbors(current):
+                    if neighbor not in visited:
+                        queue.append(neighbor)
+                
+        return result
+    
+
+
+
     
 
