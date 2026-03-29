@@ -112,7 +112,33 @@ class KnowledgeGraph:
                         queue.append(neighbor)
                 
         return result
-    
+        
+    #DFS traversal (deep first method) 
+    def dfs(self, start):
+        if start not in self.vertices:
+            return []
+
+        visited = set() #track visited vertices 
+        stack = [start] #stack for dfs
+        result = [] #stores traversal order 
+
+        while stack: 
+            current = stack.pop()
+
+            #if the vertex isn't visited 
+            if current not in visited:
+                visited.add(current)
+                result.append(current)
+
+                #add neighbours to stack 
+                for neighbor in self.get_neighbors(current): 
+                    if neighbor not in visited:
+                        stack.append(neighbor)
+
+        return result 
+        
+
+
 
 
 
