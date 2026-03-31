@@ -136,6 +136,34 @@ class KnowledgeGraph:
                         stack.append(neighbor)
 
         return result 
+
+    #shortest path using bfs
+    def shortest_path(self, start, end):
+        #check if both vertices exist
+        if start not in self.vertices or end not in self.vertices:
+            return []
+
+        from collections import deque
+
+        queue = deque([(start, [start])])  #(current node, path so far)
+        visited = set()
+
+        while queue:
+            current, path = queue.popleft()
+
+            #if we reached the target, return path
+            if current == end:
+            return path
+
+            if current not in visited:
+                visited.add(current)
+
+                for neighbor in self.get_neighbors(current):
+                    if neighbor not in visited:
+                        queue.append((neighbor, path + [neighbor]))
+
+        #no path found
+        return []
         
 
 
