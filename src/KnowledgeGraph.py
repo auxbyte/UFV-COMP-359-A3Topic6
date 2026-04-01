@@ -77,7 +77,7 @@ class KnowledgeGraph:
         if vid not in self.vertices:
             return []
             #outgoing is a dict ---> keys are neighbour vertex ids 
-            return list(self.vertices[vid].outgoing.keys())
+        return list(self.vertices[vid].outgoing.keys())
             
     #get all incoming neighbours (who point to this vertex)
     def get_predecessors(self,vid):
@@ -85,7 +85,7 @@ class KnowledgeGraph:
             return []
 
             #incoming dict stores vertices that connect to this one 
-            return list(self.vertices[vid].incoming.keys())
+        return list(self.vertices[vid].incoming.keys())
 
     #BFS traversal 
     def bfs(self,start): 
@@ -153,7 +153,7 @@ class KnowledgeGraph:
 
             #if we reached the target, return path
             if current == end:
-            return path
+                return path
 
             if current not in visited:
                 visited.add(current)
