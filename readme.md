@@ -39,6 +39,17 @@ From the `src` directory, run:
 
 `python RunRealDemo.py`
 
+### Core Data Structures (Member 1: Michael)
+
+Core Data Structures were implemented across the codebase:
+
+- `EdgeData.py` - store edge between two variables
+- `KnowledgeGraph.py` - top level object to represent a graph
+- `Vertex.py` - single vertex/node in a graph
+- `VertexData.py` - data for a vertex
+
+These classes served as a foundation for the other group members to build structure and methods around.
+
 ### Traversal (Member 4: Sabreen)
 
 Traversal functionality is implemented in `KnowledgeGraph.py` and includes:
@@ -64,6 +75,11 @@ The following queries are supported:
 These queries traverse the knowledge graph using adjacency dictionaries to retrieve relationships between people and titles.
 
 ## Reflection
+
+### Structures & Planning (Michael)
+
+For my part, I focused on initial planning and system design. I reviewed the best practices with `Knowledge Graph` implementations and common details. I was able to create the foundational classes for the team to use.
+I also planned out the various division of tasks among the group members.
 
 ### Traversal (Sabreen)
 
@@ -105,6 +121,10 @@ Sabreen
 ## Contributions
 
 * Parent, Michael [GitHub](https://github.com/auxbyte)
+  - Planned project scheduling & division of work
+  - Planned overall structure & implementation detail
+  - Defined core Vertex & Arc Data Structures
+  - Built top-level KnowledgeGraph class and structure
 
 * Gill, Sabreen [GitHub](https://github.com/sabrreen)
   - Implemented traversal (BFS, DFS, shortest_path)
