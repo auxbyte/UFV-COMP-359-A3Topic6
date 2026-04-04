@@ -10,6 +10,11 @@ Implement a knowledge graph data structure.
 * what is the complexity of inserting a new vertex? a new arc? removing an arc? removing a vertex?
 * demonstrate applying your knowledge base to a dataset, such as a smaller portion of IMDBs free and smaller database (https://datasets.imdbws.com/)
 
+Addition notes from our conversations in class:
+* Use hash tables to improve performance 
+* Create a folder for screenshot logs/ vlogs
+* Use mermaid for visualization
+
 ## Usage & Repository Details
 
 ### Running the IMDb Demo
@@ -114,6 +119,19 @@ The following queries are supported:
 
 These queries traverse the knowledge graph using adjacency dictionaries to retrieve relationships between people and titles.
 
+### Visualization / Presentation
+
+Visualization is done by copying the output data to a parser in Visualization_OutputParserToMermaid.py
+
+We can show three types of relationships: 
+
+- Actor to Movie
+- Director to Movie
+- Co-star to Actor
+
+The parser will output mermaid's visualization code, which we can copy to the website https://mermaid.live/edit
+
+
 ## Reflection
 
 ### Structures & Planning (Michael)
@@ -140,6 +158,10 @@ For my part, I focused on the implementation of the data loader that converts th
 ### Demo Queries (Kirat)
 
 For my part, I implemented query functions that allow the knowledge graph to be used in a meaningful way. These include filmography lookup, director lookup, and co-star relationships. I first tested my queries using a small manually constructed graph, then integrated them with the IMDb loader to run on real data. A key challenge was ensuring the queries correctly navigated the graph structure using outgoing and incoming edges.
+
+### Visualization (Jack)
+
+For my part, I focused on creating the visualization of the knowledge graph using Mermaid flowcharts. This means taking the outputs from our RealDemo and transforming them into mermaid's nodes and edges that shows relationships with actors, movies, directors, and co-stars. A huge challenge was ensuring that each node had a unique identifier, so that the Mermaid syntax code can work correctly. Eric helped the group write the big O notation studies. I also did the final debug testing presentation for our group. 
 
 ## Complexity Analysis
 
@@ -247,3 +269,9 @@ Sabreen
   - Implemented demo queries (filmography, director, co-stars)
   - Integrated queries with IMDb dataset
   - Created demo runner for real data (`RunRealDemo.py`)
+
+
+* Jack, Tse [GitHub](https://github.com/tsehoyin)
+  - Implemented Mermaid Visualization (Parser)
+  - Debug and Fixed Code
+  - Added databse loading warnings.
