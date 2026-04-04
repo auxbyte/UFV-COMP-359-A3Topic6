@@ -35,7 +35,7 @@ https://datasets.imdbws.com/
 
 WARNING: 
 Do NOT rename .gz, use winrar/zip to extract the .gz data to turn the files into .tsv
-Additional: Sometimes coding apps(pycharm/visio code) 
+Additional: Some coding apps(pycharm/visio code/others) 
 run the loading database from root directory, 
 if `src/data/` does not work, create another foldier called `data` in the project root directory
 
