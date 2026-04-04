@@ -50,6 +50,17 @@ Core Data Structures were implemented across the codebase:
 
 These classes served as a foundation for the other group members to build structure and methods around.
 
+### Arc Operations (Member 3: Donald)
+
+Arc operations are implemented in `KnowledgeGraph.py` and include:
+
+- `insert_arc(u, v, edge_data)` — inserts a directed arc from u to v
+- `remove_arc(u, v)` — removes the directed arc from u to v
+- `arc_exists(u, v)` — checks whether an arc exists from u to v
+- `get_arc(u, v)` — retrieves the edge data associated with the arc
+
+These methods ensure that both outgoing and incoming adjacency dictionaries remain in synch, maintaining consistency of the graph structure.
+
 ### Traversal (Member 4: Sabreen)
 
 Traversal functionality is implemented in `KnowledgeGraph.py` and includes:
@@ -93,6 +104,10 @@ These queries traverse the knowledge graph using adjacency dictionaries to retri
 For my part, I focused on initial planning and system design. I reviewed the best practices with `Knowledge Graph` implementations and common details. I was able to create the foundational classes for the team to use.
 I also planned out the various division of tasks among the group members.
 
+### Arc Operations (Donald)
+
+For my part, I implemented the core arc operations of the knowledge graph, including inserting, removing, checking existence, and retrieving arcs between vertices. I focused on ensuring that both outgoing and incoming adjacency dictionaries remained consistent after each operation. One challenge was ensuring that updates were reflected on both endpoints of an arc, which is critical for maintaining graph integrity. To solve this, each operation was carefully designed to update both endpoints simultaneously. I tested my implementation using a small example graph to verify that arc creation and deletion behaved correctly.
+
 ### Traversal (Sabreen)
 
 For my part, I focused on the implementation of traversal methods which allows the graph to be explored rather than just stored. After reviewing BFS and DFS concepts, I was able to adapt them to the project structure. A challenge I faced was making sure the methods were cleanly integrated with the existing graph design. By using helper methods like `get_neighbors`, I was able to achieve this. This implementation greatly helps in scenarios where you are exploring relationships and finding paths between entities.
@@ -106,6 +121,13 @@ For my part, I focused on the implementation of the data loader that converts th
 For my part, I implemented query functions that allow the knowledge graph to be used in a meaningful way. These include filmography lookup, director lookup, and co-star relationships. I first tested my queries using a small manually constructed graph, then integrated them with the IMDb loader to run on real data. A key challenge was ensuring the queries correctly navigated the graph structure using outgoing and incoming edges.
 
 ## Complexity Analysis
+
+### Arc Operation Complexities (u = source vertex and v = destination vertex)
+
+- `insert_arc(u, v, data)`: O(1) average, O(n) worst-case (hash collision)
+- `remove_arc(u, v)`: O(1) average, O(n) worst-case (hash collision)
+- `arc_exists(u, v)`: O(1) average, O(n) worst-case (hash collision)
+- `get_arc(u, v)`: O(1) average, O(n) worst-case (hash collision)
 
 ### Traversal Complexities (Where V = vertices and E = edges)
 
@@ -140,6 +162,12 @@ Space:
 - Python Software Foundation. (2026) "csv — CSV File Reading and Writing." Python 3.14 documentation.
 https://docs.python.org/3/library/csv.html
 
+Donald
+
+- Miller, Brad, and David Ranum. "7.6. Implementation." *Problem Solving with Algorithms and Data Structures using Python*. Runestone Academy. Accessed March 23, 2026. https://runestone.academy/ns/books/published/pythonds/Graphs/Implementation.html
+- Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data Structures and Algorithms in Python*. Wiley, 2013.
+- OpenAI. "ChatGPT." https://chat.openai.com/ — Used for code review and debugging assistance.
+
 Sabreen
 
 - Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data Structures and Algorithms in Python*. Wiley, 2013.
@@ -159,6 +187,11 @@ Sabreen
   - Planned overall structure & implementation detail
   - Defined core Vertex & Arc Data Structures
   - Built top-level KnowledgeGraph class and structure
+
+* Okonkwo, Donald [GitHub](https://github.com/donzyC)
+  - Implemented arc operations (insert_arc, remove_arc, arc_exists, get_arc)
+  - Ensured synchronization between outgoing and incoming adjacency dictionaries
+  - Performed testing using main.py to validate correctness of arc insertion, retrieval, and deletion
 
 * Gill, Sabreen [GitHub](https://github.com/sabrreen)
   - Implemented traversal (BFS, DFS, shortest_path)
