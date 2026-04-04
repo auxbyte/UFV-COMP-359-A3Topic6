@@ -56,6 +56,17 @@ Core Data Structures were implemented across the codebase:
 
 These classes served as a foundation for the other group members to build structure and methods around.
 
+### Vertex Operations (Member 2: Eric Thai)
+
+Vertex management takes place in KnowledgeGraph.py, and it involves the following operations:
+
+- insert_vertex(vid, data): inserts a vertex in the graph only when the vertex id is not yet existing in the graph.
+- remove_vertex(vid): removes a particular vertex from the graph and also deletes all the adjacent arcs by visiting the adjacent dictionaries of that vertex before removing the vertex itself.
+- get_vertex(vid): retrieves a vertex based on the given vertex id.
+- vertex_exists(vid): checks whether a particular vertex exists in the graph or not.
+
+This completes the basic vertex management operations for a graph.
+
 ### Arc Operations (Member 3: Donald)
 
 Arc operations are implemented in `KnowledgeGraph.py` and include:
@@ -110,6 +121,10 @@ These queries traverse the knowledge graph using adjacency dictionaries to retri
 For my part, I focused on initial planning and system design. I reviewed the best practices with `Knowledge Graph` implementations and common details. I was able to create the foundational classes for the team to use.
 I also planned out the various division of tasks among the group members.
 
+### Vertex Operations (Eric)
+
+The basic vertex operations in the knowledge graph were implemented. These include vertex addition, deletion, vertex lookup, and presence detection. The removal of vertices was especially important because when a vertex is deleted, the arcs connecting to the adjacent vertices must be removed in both the out-degree and in-degree dictionaries of the neighbors to maintain consistency within the graph. One of the key issues was making sure that no dangling pointers remain after a vertex has been deleted, so I started by cleaning up each end of the connections before deleting the vertex itself.
+
 ### Arc Operations (Donald)
 
 For my part, I implemented the core arc operations of the knowledge graph, including inserting, removing, checking existence, and retrieving arcs between vertices. I focused on ensuring that both outgoing and incoming adjacency dictionaries remained consistent after each operation. One challenge was ensuring that updates were reflected on both endpoints of an arc, which is critical for maintaining graph integrity. To solve this, each operation was carefully designed to update both endpoints simultaneously. I tested my implementation using a small example graph to verify that arc creation and deletion behaved correctly.
@@ -127,6 +142,13 @@ For my part, I focused on the implementation of the data loader that converts th
 For my part, I implemented query functions that allow the knowledge graph to be used in a meaningful way. These include filmography lookup, director lookup, and co-star relationships. I first tested my queries using a small manually constructed graph, then integrated them with the IMDb loader to run on real data. A key challenge was ensuring the queries correctly navigated the graph structure using outgoing and incoming edges.
 
 ## Complexity Analysis
+
+### Vertex Operations Complexity
+
+- insert_vertex(vid, data): O(1) average, O(n) worst case (hash collision), as insertion is done in the main vertex dictionary, which is implemented using Python’s hashtable.
+- vertex_exists(vid): O(1) average, O(n) worst case (hash collision), as this operation is done by checking membership in the vertex dictionary.
+- get_vertex(vid): O(1) average, O(n) worst case (hash collision), as a dictionary lookup operation on the vertex table is carried out here.
+- remove_vertex(vid): O(deg(v)) average for the removal of all the arcs incident on the vertex, O(1) average for removal of the vertex from the vertex table.
 
 ### Arc Operation Complexities (u = source vertex and v = destination vertex)
 
@@ -174,6 +196,13 @@ Donald
 - Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data Structures and Algorithms in Python*. Wiley, 2013.
 - OpenAI. "ChatGPT." https://chat.openai.com/ — Used for code review and debugging assistance.
 
+Eric
+
+- Python Software Foundation. “Built-in Types — dict.” Python 3 documentation. https://docs.python.org/3/library/stdtypes.html#dict
+- Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data Structures and Algorithms in Python*. Wiley, 2013.
+- Miller, Brad, and David Ranum. “Graph Implementation.” *Problem Solving with Algorithms and Data Structures using Python*. Runestone Academy. https://runestone.academy/ns/books/published/pythonds/Graphs/Implementation.html
+- OpenAI. “ChatGPT.” https://chat.openai.com/
+
 Sabreen
 
 - Goodrich, Michael T., Roberto Tamassia, and Michael H. Goldwasser. *Data Structures and Algorithms in Python*. Wiley, 2013.
@@ -193,6 +222,11 @@ Sabreen
   - Planned overall structure & implementation detail
   - Defined core Vertex & Arc Data Structures
   - Built top-level KnowledgeGraph class and structure
+
+* Thai, Eric [GitHub](https://github.com/EricCongThai)
+  - Implemented vertex operations insert_vertex, remove_vertex, get_vertex, vertex_exists) in KnowledgeGraph.py
+  - Ensured vertex deletion removes all incident references from neighboring adjacency dictionaries
+  - Contributed to reasoning about hash-table based storage for the main vertex table and adjacency dictionaries
 
 * Okonkwo, Donald [GitHub](https://github.com/donzyC)
   - Implemented arc operations (insert_arc, remove_arc, arc_exists, get_arc)
